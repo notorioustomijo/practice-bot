@@ -1,0 +1,5 @@
+fastapi==0.103.0
+uvicorn==0.23.2
+langchain==0.2.0
+langgraph==0.3.7
+langchain_mistralai==0.1.13

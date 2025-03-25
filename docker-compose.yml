@@ -1,0 +1,24 @@
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    environment:
+      - VITE_HOST=0.0.0.0
+  backend:
+    build: ./backend
+    ports:
+      - "5001:5000"
+    depends_on:
+      - ai-handler
+    environment:
+      - AI_HANDLER_URL=http://ai-handler:8000/chat
+  ai-handler:
+    build: ./ai-handler
+    ports:
+      - "8000:8000"
+    environment:
+      - MISTRAL_API_KEY=9mcrlrJQrEfHleT0vBy8LDt4qlIxAeLI
+    
