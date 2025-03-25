@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://backend:5000';
+
 function App() {
   const [message, setMessage] = useState('');
   const [chat, setChat] = useState([]);
@@ -12,7 +14,7 @@ function App() {
     setMessage('');
 
     try {
-      const { data } = await axios.post('http://localhost:5001/api/chat', { message });
+      const { data } = await axios.post(`${backendUrl}/api/chat`, { message });
       setChat((prev) => [...prev, { sender: 'bot', text: data.response }]);
     } catch (error) {
       setChat((prev) => [...prev, { sender: 'bot', text: 'Error: Could not get response'}]);
